@@ -25,17 +25,20 @@ export class AppComponent {
     this.http
     .post<UserInfo>('/api/signIn', {
       username: this.username,
+      password: this.password,
     })
     .subscribe({
       next:user=>{
         this.remult.user = user;
         this.username = '';
+        this.password = '';
       },
       error:(error)=>alert(error.error),
     });
   }
 
   username = '';
+  password = '';
   remult = remult;
 
   ngOnInit() {

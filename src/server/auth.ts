@@ -1,20 +1,30 @@
-import express, {Router} from 'express';
+import express, { Router } from 'express';
 import { UserInfo } from 'remult';
-const validUsers : UserInfo[]=[
-    {id: '1', name: 'Jane', roles: ['admin']},
-    {id: '2', name: 'Steve'},
+
+interface ExtendedUserInfo extends UserInfo {
+  password: string;
+}
+
+const validUsers: ExtendedUserInfo[] = [
+  { id: '1', name: 'Jane', roles: ['admin'], password: 'pass123' },
+  { id: '2', name: 'Steve', password: 'test456' },
 ];
 
 export const auth = Router();
 auth.use(express.json());
 
 auth.post("/api/signIn", (req, res) => {
-  const user = validUsers.find(user => user.name === req.body.username);
+  const { username, password } = req.body;
+  const user = validUsers.find(
+    user => user.name === username && user.password === password
+  );
+
   if (user) {
-    req.session!['user'] = user;
-    res.json(user);
+    const { password, ...userWithoutPassword } = user; // don't store password in session
+    req.session!['user'] = userWithoutPassword;
+    res.json(userWithoutPassword);
   } else {
-    res.status(404).send("Invalid user");
+    res.status(401).send("Invalid username or password");
   }
 });
 
