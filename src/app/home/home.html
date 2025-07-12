@@ -1,0 +1,179 @@
+<div class="app-container">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="logo">
+      <h2>BeanCount</h2>
+    </div>
+    
+    <ul class="nav-menu">
+      <li class="nav-item active">
+        <i class="icon">🏠</i>
+        <span>Home</span>
+      </li>
+      <li class="nav-item">
+        <i class="icon">📦</i>
+        <span>Inventory</span>
+      </li>
+      <li class="nav-item">
+        <i class="icon">💰</i>
+        <span>Sales</span>
+      </li>
+      <li class="nav-item">
+        <i class="icon">👥</i>
+        <span>Employees</span>
+      </li>
+      <li class="nav-item">
+        <i class="icon">📊</i>
+        <span>Analytics</span>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="header">
+      <h1>Home</h1>
+    </header>
+
+    <div class="content">
+      <!-- Quick Analytics -->
+      <section class="quick-analytics">
+        <h2>Quick Analytics</h2>
+        <h3>Business KPIs</h3>
+        
+        <div class="kpi-grid">
+          <div class="kpi-card blue">
+            <div class="kpi-value">$75</div>
+            <div class="kpi-label">Total Sales (Feb 1-5)</div>
+          </div>
+          <div class="kpi-card green">
+            <div class="kpi-value">$5125</div>
+            <div class="kpi-label">Inventory Value</div>
+          </div>
+          <div class="kpi-card purple">
+            <div class="kpi-value">10</div>
+            <div class="kpi-label">Total Staff</div>
+          </div>
+          <div class="kpi-card yellow">
+            <div class="kpi-value">$40,333</div>
+            <div class="kpi-label">Monthly Payroll</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Performance -->
+      <section class="product-performance">
+        <h3>Product Performance</h3>
+        <div class="chart-container">
+          <div class="bar-chart">
+            <div class="chart-item">
+              <div class="bar-label">Cappuccino</div>
+              <div class="bar-wrapper">
+                <div class="bar" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="bar-label">Coffee</div>
+              <div class="bar-wrapper">
+                <div class="bar" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="bar-label">Muffin</div>
+              <div class="bar-wrapper">
+                <div class="bar" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="bar-label">Tea</div>
+              <div class="bar-wrapper">
+                <div class="bar" style="width: 60%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="bar-label">Espresso</div>
+              <div class="bar-wrapper">
+                <div class="bar" style="width: 55%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-item">Sales</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Items by Stock Level -->
+      <section class="stock-level">
+        <h3>Items by Stock Level</h3>
+        <div class="stock-chart">
+          <div class="stock-bars">
+            <div class="stock-bar" style="height: 30px; background: #ff6b6b;">
+              <span class="stock-label">Bagel</span>
+            </div>
+            <div class="stock-bar" style="height: 40px; background: #ffa726;">
+              <span class="stock-label">Milk</span>
+            </div>
+            <div class="stock-bar" style="height: 45px; background: #ffca28;">
+              <span class="stock-label">Muffin</span>
+            </div>
+            <div class="stock-bar" style="height: 50px; background: #ffee58;">
+              <span class="stock-label">Croissant</span>
+            </div>
+            <div class="stock-bar" style="height: 55px; background: #66bb6a;">
+              <span class="stock-label">Espresso</span>
+            </div>
+            <div class="stock-bar" style="height: 60px; background: #66bb6a;">
+              <span class="stock-label">Latte Mix</span>
+            </div>
+            <div class="stock-bar" style="height: 75px; background: #66bb6a;">
+              <span class="stock-label">Coffee Cups</span>
+            </div>
+            <div class="stock-bar" style="height: 90px; background: #66bb6a;">
+              <span class="stock-label">Sugar</span>
+            </div>
+          </div>
+          <div class="stock-axis">
+            <span>0</span>
+            <span>50</span>
+            <span>100</span>
+            <span>150</span>
+            <span>200</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Payment Method Trends -->
+      <section class="payment-trends">
+        <h3>Payment Method Trends</h3>
+        <div class="donut-chart">
+          <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#e0e0e0" stroke-width="20"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#2196f3" stroke-width="20" 
+                    stroke-dasharray="125.6 376.8" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#4caf50" stroke-width="20" 
+                    stroke-dasharray="94.2 376.8" stroke-dashoffset="-125.6" transform="rotate(-90 100 100)"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#ff9800" stroke-width="20" 
+                    stroke-dasharray="62.8 376.8" stroke-dashoffset="-219.8" transform="rotate(-90 100 100)"/>
+          </svg>
+        </div>
+        <div class="payment-legend">
+          <div class="legend-item">
+            <span class="legend-color" style="background: #2196f3;"></span>
+            <span>Credit</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background: #4caf50;"></span>
+            <span>Cash</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background: #ff9800;"></span>
+            <span>App</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+   
+  </main>
+</div>

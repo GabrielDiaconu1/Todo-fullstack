@@ -3,22 +3,26 @@ import { Component} from '@angular/core';
 import { remult, UserInfo } from 'remult';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Todo } from './todo/todo';
 import { retry } from 'rxjs';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
-  imports: [CommonModule, FormsModule, Todo],
+  imports: [CommonModule, FormsModule, RouterModule],
   standalone: true
 })
 export class AppComponent {
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient, private router: Router) {}
 
   SignOut(){
     this.http.post("/api/signOut", {})
     .subscribe(()=>(this.remult.user =undefined ));
+  }
+
+  goHome() {
+    this.router.navigate(['']);
   }
 
   signIn(){
