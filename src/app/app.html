@@ -23,17 +23,52 @@
 </ng-container>
 
 <ng-container *ngIf="remult.authenticated()">
-
-  
-  <div class="user-profile">
+  <div class="app-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="logo">
+        <h2>BeanCount</h2>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/">
+            <i class="icon">🏠</i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/inventory">
+            <i class="icon">📦</i>
+            <span>Inventory</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <i class="icon">💰</i>
+          <span>Sales</span>
+        </li>
+        <li class="nav-item">
+          <i class="icon">👥</i>
+          <span>Employees</span>
+        </li>
+        <li class="nav-item">
+          <i class="icon">📊</i>
+          <span>Analytics</span>
+        </li>
+      </ul>
+    </nav>
+    <!-- Main Content -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+    <!-- Keep user profile as a fixed overlay -->
+    <div class="user-profile">
       <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2NjY2NjYiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNSIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDEzIDIyIDIwIDIyUzMwIDI1IDMwIDMwIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="User Avatar" class="avatar">
       <div class="user-info">
-          {{ remult.user?.name }}
+        {{ remult.user?.name }}
         <div class="user-action">View profile</div>
       </div>
-      <button class="settings-btn">⚙️</button>
+      <button class="settings-btn" (click)="SignOut()">🚪</button>
     </div>
-  <button (click)="SignOut()">Sign Out</button>
-  <router-outlet></router-outlet>
+  </div>
 </ng-container>
 

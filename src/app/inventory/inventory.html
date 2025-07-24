@@ -1,0 +1,61 @@
+<!-- Search and Filters -->
+<div class="filters">
+    <input type="text" placeholder="Enter Item Name or ID" [(ngModel)]="searchText" />
+    
+    <label>Last Restock Date:</label>
+    <input type="date" [(ngModel)]="dateFrom" />
+    <input type="date" [(ngModel)]="dateTo" />
+  
+    <label>Price Range:</label>
+    <input type="number" placeholder="Min" [(ngModel)]="priceMin" />
+    <input type="number" placeholder="Max" [(ngModel)]="priceMax" />
+  
+    <label>Stock Level:</label>
+    <input type="number" placeholder="Min" [(ngModel)]="stockMin" />
+    <input type="number" placeholder="Max" [(ngModel)]="stockMax" />
+  
+    <label>Category:</label>
+    <select [(ngModel)]="selectedCategory">
+      <option value="">All</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  
+    <label>Supplier:</label>
+    <select [(ngModel)]="selectedSupplier">
+      <option value="">All</option>
+      <option *ngFor="let supplier of suppliers" [value]="supplier">{{ supplier }}</option>
+    </select>
+  
+    <button (click)="applyFilters()">Apply Filters</button>
+    <button (click)="resetFilters()">Reset Filters</button>
+  </div>
+  
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Category</th>
+        <th>Stock Level</th>
+        <th>Price</th>
+        <th>Supplier</th>
+        <th>Last Restock Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredInventory">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.stock }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.supplier }}</td>
+        <td>{{ item.restockDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Download Button -->
+  <button (click)="downloadCSV()">Download Inventory Report</button>
+  
