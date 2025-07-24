@@ -1,1 +1,65 @@
-<p>employees works!</p>
+<!-- Filters -->
+<div class="filters">
+    <input type="text" placeholder="Enter Employee Name or ID" [(ngModel)]="searchText" />
+  
+    <label>Hire Date:</label>
+    <input type="date" [(ngModel)]="dateFrom" />
+    <input type="date" [(ngModel)]="dateTo" />
+  
+    <label>Salary Range:</label>
+    <input type="number" placeholder="Min" [(ngModel)]="salaryMin" />
+    <input type="number" placeholder="Max" [(ngModel)]="salaryMax" />
+  
+    <label>Department:</label>
+    <select [(ngModel)]="selectedDepartment">
+      <option value="">All</option>
+      <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+    </select>
+  
+    <label>Position:</label>
+    <select [(ngModel)]="selectedPosition">
+      <option value="">All</option>
+      <option *ngFor="let position of positions" [value]="position">{{ position }}</option>
+    </select>
+  
+    <label>Supervisor:</label>
+    <select [(ngModel)]="selectedSupervisor">
+      <option value="">All</option>
+      <option *ngFor="let sup of supervisors" [value]="sup">{{ sup }}</option>
+    </select>
+  
+    <button (click)="applyFilters()">Apply Filters</button>
+    <button (click)="resetFilters()">Reset Filters</button>
+  </div>
+  
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Department</th>
+        <th>Supervisor</th>
+        <th>Salary</th>
+        <th>Hire Date</th>
+        <th>Contact Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of filteredEmployees">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.position }}</td>
+        <td>{{ emp.department }}</td>
+        <td>{{ emp.supervisor || '-' }}</td>
+        <td>${{ emp.salary }}</td>
+        <td>{{ emp.hireDate }}</td>
+        <td><a href="mailto:{{ emp.contact }}">{{ emp.contact }}</a></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Download Report Button -->
+  <button (click)="downloadCSV()">Download Employee Report</button>
+  

@@ -1,1 +1,53 @@
-<p>sales works!</p>
+<!-- Sales Filters -->
+<div class="filters">
+    <input type="text" placeholder="Enter Item or Customer Name" [(ngModel)]="searchText" />
+  
+    <label>Order Date:</label>
+    <input type="date" [(ngModel)]="dateFrom" />
+    <input type="date" [(ngModel)]="dateTo" />
+  
+    <label>Price Range:</label>
+    <input type="number" placeholder="Min" [(ngModel)]="priceMin" />
+    <input type="number" placeholder="Max" [(ngModel)]="priceMax" />
+  
+    <label>Payment Type:</label>
+    <select [(ngModel)]="selectedPaymentType">
+      <option value="">All</option>
+      <option *ngFor="let type of paymentTypes" [value]="type">{{ type }}</option>
+    </select>
+  
+    <button (click)="applyFilters()">Apply Filters</button>
+    <button (click)="resetFilters()">Reset Filters</button>
+  </div>
+  
+  <!-- Sales Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Item</th>
+        <th>Date</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of filteredSales">
+        <td>{{ order.id }}</td>
+        <td>{{ order.customer }}</td>
+        <td>{{ order.item }}</td>
+        <td>{{ order.date }}</td>
+        <td>{{ order.qty }}</td>
+        <td>${{ order.price }}</td>
+        <td>${{ order.total }}</td>
+        <td>{{ order.type }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Download Report -->
+  <button (click)="downloadCSV()">Download Sales Report</button>
+  

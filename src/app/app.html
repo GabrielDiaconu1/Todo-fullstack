@@ -42,23 +42,31 @@
             <span>Inventory</span>
           </a>
         </li>
-        <li class="nav-item">
-          <i class="icon">💰</i>
-          <span>Sales</span>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/sales">
+            <i class="icon">💰</i>
+            <span>Sales</span>
+          </a>
         </li>
-        <li class="nav-item">
-          <i class="icon">👥</i>
-          <span>Employees</span>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/employees">
+            <i class="icon">👥</i>
+            <span>Employees</span>
+          </a>
         </li>
-        <li class="nav-item">
-          <i class="icon">📊</i>
-          <span>Analytics</span>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/analytics">
+            <i class="icon">📊</i>
+            <span>Analytics</span>
+          </a>
         </li>
       </ul>
     </nav>
     <!-- Main Content -->
     <main class="main-content">
-      <router-outlet></router-outlet>
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
     </main>
     <!-- Keep user profile as a fixed overlay -->
     <div class="user-profile">

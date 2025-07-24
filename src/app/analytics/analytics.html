@@ -1,1 +1,59 @@
-<p>analytics works!</p>
+<div *ngIf="isAdmin; else notAuthorized">
+  <h2>Analytics</h2>
+
+  <!-- Daily Sales Chart (Static Bar Chart) -->
+  <h4>Daily Sales (February 2025)</h4>
+  <div class="bar-chart sales-bar-chart">
+    <div *ngFor="let value of salesChartData[0].data; let i = index" class="bar-group">
+      <div class="bar sales-bar" [style.height.px]="value * 5"></div>
+      <span class="bar-label">{{ salesChartLabels[i] }}</span>
+      <span class="bar-value">{{ value }}</span>
+    </div>
+  </div>
+
+  <!-- Payment Methods (Static Donut Chart Representation) -->
+  <h4>Payment Methods</h4>
+  <div class="donut-chart-row">
+    <div class="donut-chart"></div>
+    <ul class="legend-list">
+      <li><span class="legend-color credit"></span>Credit (49)</li>
+      <li><span class="legend-color cash"></span>Cash (31)</li>
+      <li><span class="legend-color app"></span>App (27)</li>
+    </ul>
+  </div>
+
+  <!-- Top 5 Most Popular Items (Static Bar Chart) -->
+  <h4>Top 5 Most Popular Items</h4>
+  <div class="bar-chart popular-items-bar-chart">
+    <div *ngFor="let value of popularItemsData[0].data; let i = index" class="bar-group">
+      <span class="bar-label">{{ popularItemsLabels[i] }}</span>
+      <div class="bar popular-bar" [style.width.px]="value * 18"></div>
+      <span class="bar-value">{{ value }}</span>
+    </div>
+  </div>
+
+  <!-- Sales Summary -->
+  <h4>Recent Sales Summary</h4>
+  <ul>
+    <li>Total Sales (Feb 1–5): <strong>${{ totalSales }}</strong></li>
+    <li>Average Daily Sales: <strong>${{ avgSales }}</strong></li>
+    <li>Best Selling Item: <strong>{{ bestItem }}</strong></li>
+    <li>Most Popular Payment: <strong>{{ topPayment }}</strong></li>
+  </ul>
+
+  <!-- Low Stock Items -->
+  <h4>Low Stock Items</h4>
+  <ul>
+    <li *ngFor="let item of lowStockItems">
+      {{ item.name }} – <span [style.color]="item.units < 30 ? 'red' : 'orange'">{{ item.units }} units</span>
+    </li>
+  </ul>
+</div>
+
+<ng-template #notAuthorized>
+  <div class="not-authorized">
+    <h3>Only Admin can view analytics</h3>
+    <p><i class="material-icons">lock</i> Access Denied</p>
+  </div>
+</ng-template>
+  
